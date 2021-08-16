@@ -12,7 +12,7 @@ module.exports = merge(commonConfig, {
     compress: true,
     historyApiFallback: true,
     proxy: {
-      '/api': process.env.PROXY,
+      '/api': process.env.PROXY || 'http:localhost:5000',
     },
   },
   stats: 'errors-warnings',
