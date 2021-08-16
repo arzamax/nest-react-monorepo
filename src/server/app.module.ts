@@ -7,7 +7,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-const getPath = (...p: any[]) => path.resolve(process.cwd(), ...p);
+const getPath = (...p: string[]) => path.resolve(process.cwd(), ...p);
 
 @Module({
   imports: [
