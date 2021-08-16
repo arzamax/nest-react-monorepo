@@ -6,12 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-dotenv.config();
-
 const getPath = (...p) => path.resolve(process.cwd(), ...p);
 
-const PUBLIC_PATH = process.env.CLIENT_PUBLIC_PATH || '/';
-const APP_TITLE = process.env.CLIENT_APP_TITLE || 'App';
+dotenv.config({ path: getPath('.env.client') });
+
+const PUBLIC_PATH = process.env.PUBLIC_PATH || '/';
+const APP_TITLE = process.env.APP_TITLE || 'App';
 
 const HtmlWebpackPluginWithConfig = new HtmlWebpackPlugin({
   template: getPath('webpack', 'html-template.ejs'),

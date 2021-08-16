@@ -7,13 +7,18 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+const getPath = (...p: any[]) => path.resolve(process.cwd(), ...p);
+
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: path.resolve(process.cwd(), getPath('.env.server')),
+    }),
     ...(process.env.NODE_ENV === 'production'
       ? [
           ServeStaticModule.forRoot({
-            rootPath: path.join(__dirname, '..', 'client'),
+            rootPath: getPath('dist', 'client'),
           }),
         ]
       : []),

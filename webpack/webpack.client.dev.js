@@ -6,13 +6,13 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   devServer: {
     host: 'localhost',
-    port: process.env.CLIENT_DEV_PORT || 3000,
+    port: process.env.PORT || 4000,
     hot: true,
     open: true,
     compress: true,
     historyApiFallback: true,
     proxy: {
-      '/api': `http://localhost:${process.env.SERVER_PORT || 5000}`,
+      '/api': process.env.PROXY,
     },
   },
   stats: 'errors-warnings',
